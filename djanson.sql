@@ -20,12 +20,22 @@ select c.customer_id as Id ,c.first_name as nombres,c.last_name as apellidos,
 
 select c.customer_id as id, c.first_name ||' '|| c.last_name as cliente, 
 c.email as correo,ci.city as ciudad,co.country as pais, a.address as direccion1,
-a.address2 as direccion2
+pa.amount
 from customer as c
 inner join address as a on a.address_id=c.address_id
 inner join city ci on ci.city_id = a.city_id
 inner join country co on co.country_id=ci.country_id
---inner join payment p on p.custormer_id=c.customer_id
+inner join payment pa on pa.customer_id=c.customer_id
 where c.active =1 order by ci.city,co.country
+
+
+select * from public.customer where activebool
+select * from public.customer  where active <> 1
+
+update public.customer set activebool=false where active <> 1
+
+
+
+
 
 ----Agregado
